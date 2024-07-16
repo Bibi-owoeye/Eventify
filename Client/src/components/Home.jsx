@@ -90,37 +90,37 @@ const Home = () => {
     </div>
 
     <div className='container mx-auto p-4'>
-        <h2>Explore Categories</h2>
+        <h2 className='font-bold text-[30px]'>Explore Categories</h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4'>
           <div className=''>
-            <img src={entertainment} alt="" />
-            <p>Entertainment</p>
+            <img src={entertainment} alt="" className='w-32'/>
+            <p className='font-semibold'>Entertainment</p>
           </div>
 
           <div>
-            <img src={edubus} alt="" />
-            <p>Education & Business</p>
+            <img src={edubus} alt="" className='w-32' />
+            <p className='font-semibold'>Education & Business</p>
           </div>
 
           <div>
-            <img src={culture} alt="" />
-            <p>Culture & Arts</p>
+            <img src={culture} alt="" className='w-32' />
+            <p className='font-semibold'>Culture & Arts</p>
           </div>
         
 
         <div>
-            <img src={sports} alt="" />
-            <p>Sports & Fitness</p>
+            <img src={sports} alt="" className='w-32'/>
+            <p className='font-semibold'>Sports & Fitness</p>
           </div>
 
           <div>
-            <img src={techinnova} alt="" />
-            <p>Technology and Innovation</p>
+            <img src={techinnova} alt="" className='w-32' />
+            <p className='font-semibold'>Technology and Innovation</p>
           </div>
 
           <div>
-            <img src={travel} alt="" />
-            <p>Travel and Adventure</p>
+            <img src={travel} alt="" className='w-32' />
+            <p className='font-semibold'>Travel and Adventure</p>
           </div>
         </div>
         
