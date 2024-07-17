@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link} from 'react-router-dom'
 import axios from 'axios'
-import camera from '../components/image/camera.png'
+import camera from '../assets/camera.png'
 
 const AcctSettingInfo = () => {
     const [image, setImage] = useState(null);

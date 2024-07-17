@@ -10,6 +10,7 @@ import Vector from '../assets/Vector.png'
 import eventbackground from '../assets/eventbackground.png'
 import calendar from '../assets/calendar.png'
 import Footer from '../components/Footer.jsx'
+import Nav from './Nav.jsx'
 
 
 // import bgimage from '../assets/bgimage.jpg'
@@ -29,7 +30,7 @@ const Home = () => {
 
   return (
     <>
-    <h2 className="text-red-600">Home Page</h2>
+    <Nav/>
     <div className='h-[50vh] bg-custom-image bg-cover bg-center' style={{ backgroundImage:"url('/bgimage.jpg')" }}>
     <div className="ml-[50px]">
         <p className="text-white text-[25px] pt-28 font-bold">Dont miss out</p>
@@ -174,7 +175,6 @@ const Home = () => {
       </div>
     </div>
 
-    <Footer></Footer>
     </>
   )
 }
