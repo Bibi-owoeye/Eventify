@@ -5,8 +5,11 @@ import google from "../assets/google.png";
 import facebook from "../assets/facebook.png";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import axios from "axios"
 
 const Register = () => {
+
+  let url = "http://localhost:5000/register"
   const formik = useFormik({
     initialValues: {
       fullname: "",
@@ -14,6 +17,15 @@ const Register = () => {
       password: "",
     },
     onSubmit: (values) => {
+      axios.post(url, values)
+      .then(()=>{
+        console.log("User registered successfully");
+        
+        formik.resetForm();
+      })
+      .catch((error)=>{
+        console.log("Error registering user:", error);
+      })
       console.log(values);
     },
     validationSchema: yup.object({
