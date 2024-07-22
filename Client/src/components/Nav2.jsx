@@ -1,11 +1,13 @@
 import React from "react";
 import logo from "../assets/Logo.png";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import ticket from "../assets/icons8-ticket-50.png";
 import star from "../assets/icons8-star-50.png";
 import Home from "./Home";
 
 const Nav = () => {
+
+    const navigate = useNavigate()
   const navLink = [
     {
       id: "1",
@@ -33,7 +35,7 @@ const Nav = () => {
     <>
       <div className="flex justify-between bg-[#2B293D] p-2 text-white ">
         <div>
-          <img className="w-[50%] ml-20" src={logo} alt="" />
+          <img className="w-[50%] ml-20" src={logo} alt="" onClick={() =>navigate('/')}/>
         </div>
         <div className="flex gap-5 pt-1 text-lg font-medium pr-12">
           {navLink.map((link) => (
@@ -43,7 +45,7 @@ const Nav = () => {
           ))}
         </div>
         <div className="flex gap-5 pt-1 mr-20 text-lg font-normal">
-          <Link className=" hover:text-[#ffe047]">Create Event</Link>
+          <Link className=" hover:text-[#ffe047]" to='/nav2/createevent'>Create Event</Link>
           <Link className=" hover:text-[#ffe047]">
             <img src={ticket} className="w-6 ml-2" alt="" />
             <p className="text-sm">Tickets</p>
@@ -54,13 +56,13 @@ const Nav = () => {
           </Link>
           <div>
             <img src="" alt="" />
-          <ul className="flex">
-            <li class="relative group">
-              <p className="block">Profile</p>
-              <div class="absolute right-0 top-[45px] group-hover:opacity-100 transition-opacity w-48 mt-2 bg-white text-black shadow-lg  rounded-md opacity-0">
-               <p className="hover:bg-gray-200 p-3" p-3> <Link >Interest</Link></p>
-                <p className="hover:bg-gray-200 p-3"><Link >Account Settings</Link></p>
-                <p  className="hover:bg-gray-200 p-3"><Link>Log Out</Link></p>
+          <ul className="">
+            <li className="group relative">
+              <p className=" focus:outline-none">Profile</p>
+              <div className="absolute left-0 top-[45px] opacity-0 hidden group-hover:block w-48 mt-2 opacity-100 bg-white text-black shadow-lg rounded-lg z-10">
+                <Link to='/nav2/interest' className="hover:bg-gray-200 p-3 block">Interest</Link>
+                <Link to='/nav2/accountInfo' className="hover:bg-gray-200 p-3 block">Account Settings</Link>
+                <Link className="hover:bg-gray-200 p-3 block" to="/">Log Out</Link>
               </div>
             </li>
           </ul>
@@ -68,7 +70,7 @@ const Nav = () => {
         </div>
       </div>
       <Outlet />
-      <Home/>
+      
     </>
   );
 };

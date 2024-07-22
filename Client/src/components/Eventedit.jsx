@@ -4,15 +4,18 @@ import Banner from '../components/Banner';
 import Ticketing from '../components/Tickets';
 import Review from '../components/Review';
 import './Eventedit.css';
-import Nav from './Nav';
+import Nav2 from './Nav2';
+import Footer from './Footer';
 
 const Eventedit = () => {
   const [changeMode, setChangeMode] = useState('edit');
 
   return (
     <>
-    <Nav/>
+
     <div className="eventedit-container">
+      <h1 className='mb-24 text-[60px] z-0'>Create an Event</h1>
+
       <section className="progress-section">
         <div className="progress-bar">
           {['edit', 'banner', 'ticketing', 'review'].map(mode => (
@@ -30,6 +33,7 @@ const Eventedit = () => {
       {changeMode === 'ticketing' && <Ticketing />}
       {changeMode === 'review' && <Review />}
     </div>
+    <Footer/>
     </>
   );
 };

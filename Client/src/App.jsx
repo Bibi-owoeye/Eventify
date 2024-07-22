@@ -19,6 +19,7 @@ import CardDetails from "./components/CardDetails";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Nav from "./components/Nav";
+import Interest from './components/Interest'
 
 const App = () => {
   return (
@@ -31,18 +32,20 @@ const App = () => {
         <Route path="/changeEmail" element={<ChangeEmail />} />
         <Route path="/Password" element={<Password />} />
         <Route path="/searchResult" element={<SearchResult />} />
-        <Route path='/createevent' element={<Eventedit />} />
         <Route path='/event/banner' element={<Banner />} />
         <Route path='/event/tickets' element={<Tickets />} />
         <Route path='/event/review' element={<Review />} />
         </Route>
+        {/* <Route path='/createevent' element={<Eventedit />} />  */}
         <Route path="/nav2" element={<Nav2 />} >
-        <Route path="/ticket" element={<Ticket1 />} />
-        <Route path="/accountInfo" element={<AcctSettingInfo />} />
+        <Route path="/nav2/ticket" element={<Ticket1 />} />
+        <Route path='/nav2/createevent' element={<Eventedit />} />
+        <Route path="/nav2/interest" element={<Interest />} />
+        <Route path="/nav2/accountInfo" element={<AcctSettingInfo />} />
 
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
               </Routes>
       
     </div>

@@ -6,7 +6,7 @@ import './edit.css';
 const Edit = () => {
   return (
     <div className="edit-container">
-      <h2 className="edit-title">Create a New Event</h2>
+      {/* <h2 className="edit-title">Create a New Event</h2> */}
 
       <div className='p-3'>
         <div className="section-header mt-7">
