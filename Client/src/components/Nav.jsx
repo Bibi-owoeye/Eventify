@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from "../assets/Logo.png"
 import    { Link, Outlet } from "react-router-dom";
+import Home from './Home';
 
 
 const Nav = () => {
@@ -8,7 +9,7 @@ const Nav = () => {
         {
             id: "1",
             name: "Home",
-            path:"/"
+            path:"/home"
         },
         {
             id: "2",
@@ -43,13 +44,14 @@ const Nav = () => {
         </div>
         <div className='flex gap-5 pt-1 mr-20 text-lg font-normal'>
             <Link  to='/createevent' className=' hover:text-[#ffe047]'>Create Event</Link>
-                <Link className=' hover:text-[#ffe047]'>Login</Link>
-                <Link className='bg-[#ffe047] text-black p-1 w-[80px] text-center h-[40px] font-medium rounded hover:scale-100 hover:bg-[#ffe070]'>Sign Up</Link>
+                <Link to='/login' className=' hover:text-[#ffe047]'>Login</Link>
+                <Link to='/register' className='bg-[#ffe047] text-black p-1 w-[80px] text-center h-[40px] font-medium rounded hover:scale-100 hover:bg-[#ffe070]'>Sign Up</Link>
                 
         </div>
  
     </div>
     <Outlet/>
+    <Home/>
     </>
   )
 }

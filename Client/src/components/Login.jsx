@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 import google from "../assets/google.png";
 import facebook from "../assets/facebook.png";
 
-const Register = () => {
+const Login = () => {
   return (
-    <div className="flex w-screen overflow-x-hidden h-screen">
-      <section className="w-[40%] bg-[#2b293d] h-[45rem] pt-5">
+    <div className="flex overflow-x-hidden">
+      <section className="w-[40%] bg-[#2b293d] h-[37rem] pt-5">
         <img src={img1} className="w-44 ps-7" alt="" />
         <h2 className="mt-24 text-[#FFFFFF] ps-14 font-bold leading-[3rem] text-4xl">
           Discover tailored <br /> events. <br /> Sign up for personalized{" "}
           <br /> recommendations <br /> today
         </h2>
       </section>
-      <section className="w-[60%] flex justify-center bg-[#2b293d] h-[45rem] ">
+      <section className="w-[60%] flex justify-center bg-[#2b293d] h-[37rem] ">
         <div className=" w-[100%] bg-white flex items-center flex-col pt-14 rounded-l-3xl">
         <div className=" w-[70%] ">
           <h1 className="text-[#2b293d] font-Montserrat font-bold text-4xl leading-10 mb-7 ">
@@ -80,7 +80,7 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
 
 
 
