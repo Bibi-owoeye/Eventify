@@ -10,11 +10,11 @@ import Ticket1 from "./components/Ticket1";
 import ChangeEmail from "./components/ChangeEmail";
 import Password from "./components/Password";
 import AcctSettingInfo from "./components/AcctSettingInfo";
-import Banner from './Components/Banner';
-import Eventedit from './Components/Eventedit';
-import Tickets from './Components/Tickets';
+import Banner from './components/Banner';
+import Eventedit from './components/Eventedit';
+import Tickets from './components/Tickets';
 import './App.css';
-import Review from './Components/Review';
+import Review from './components/Review';
 import CardDetails from "./components/CardDetails";
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
         <Route path="/changeEmail" element={<ChangeEmail />} />
         <Route path="/Password" element={<Password />} />
         <Route path="/searchResult" element={<SearchResult />} />
-        <Route path='/event/home' element={<Eventedit />} />
+        <Route path='/createevent' element={<Eventedit />} />
         <Route path='/event/banner' element={<Banner />} />
         <Route path='/event/tickets' element={<Tickets />} />
         <Route path='/event/review' element={<Review />} />

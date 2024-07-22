@@ -11,6 +11,7 @@ import eventbackground from '../assets/eventbackground.png'
 import calendar from '../assets/calendar.png'
 import Footer from '../components/Footer.jsx'
 import Nav from './Nav.jsx'
+import CardDetails from './CardDetails.jsx'
 
 
 // import bgimage from '../assets/bgimage.jpg'
@@ -126,6 +127,7 @@ const Home = () => {
         </div>
         
     </div>
+    <CardDetails/>
 
     <div className=''>
       <div className='h-[200px] pt-12 bg-cover bg-center' style={{ backgroundImage: `url(${yellowbackground})` }}>

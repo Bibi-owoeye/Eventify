@@ -42,7 +42,7 @@ const Nav = () => {
         )}
         </div>
         <div className='flex gap-5 pt-1 mr-20 text-lg font-normal'>
-            <Link  to='/createevent' className=' hover:text-[#ffe047]'>Create Event</Link>
+            <Link className=' hover:text-[#ffe047]'>Create Event</Link>
                 <Link className=' hover:text-[#ffe047]'>Login</Link>
                 <Link className='bg-[#ffe047] text-black p-1 w-[80px] text-center h-[40px] font-medium rounded hover:scale-100 hover:bg-[#ffe070]'>Sign Up</Link>
                 

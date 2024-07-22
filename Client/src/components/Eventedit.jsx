@@ -1,14 +1,17 @@
 import { useState } from 'react';
-import Edit from '../Components/Edit';
-import Banner from '../Components/Banner';
-import Ticketing from '../Components/Tickets';
-import Review from '../Components/Review';
+import Edit from '../components/Edit';
+import Banner from '../components/Banner';
+import Ticketing from '../components/Tickets';
+import Review from '../components/Review';
 import './Eventedit.css';
+import Nav from './Nav';
 
 const Eventedit = () => {
   const [changeMode, setChangeMode] = useState('edit');
 
   return (
+    <>
+    <Nav/>
     <div className="eventedit-container">
       <section className="progress-section">
         <div className="progress-bar">
@@ -27,6 +30,7 @@ const Eventedit = () => {
       {changeMode === 'ticketing' && <Ticketing />}
       {changeMode === 'review' && <Review />}
     </div>
+    </>
   );
 };
 
