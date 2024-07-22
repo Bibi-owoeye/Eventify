@@ -1,52 +1,321 @@
-import { useState } from "react"
+import React from "react";
+import img1 from "../assets/Logo.png";
+import { Link } from "react-router-dom";
+import google from "../assets/google.png";
+import facebook from "../assets/facebook.png";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import axios from "axios"
 
-const Register = ()=>{
- const [openModal, setOpenModal] = useState(false)
-    return(
-    <>
-        {/* // <!-- Modal toggle --> */}
- {!openModal &&  <button data-modal-target="static-modal" data-modal-toggle="static-modal" className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" onClick={()=>setOpenModal(!openModal)}>
-    Toggle modal
-  </button> 
- }
+const Register = () => {
 
+  let url = "http://localhost:5000/register"
+  const formik = useFormik({
+    initialValues: {
+      fullname: "",
+      email: "",
+      password: "",
+    },
+    onSubmit: (values) => {
+      axios.post(url, values)
+      .then(()=>{
+        console.log("User registered successfully");
+        
+        formik.resetForm();
+      })
+      .catch((error)=>{
+        console.log("Error registering user:", error);
+      })
+      console.log(values);
+    },
+    validationSchema: yup.object({
+      fullname: yup.string().required("fullname is required"),
+      email: yup
+        .string()
+        .required("email is required")
+        .email("Valid email is required"),
+      password: yup.string().required("password is required").min(6, "password must be more than 6"),
+    }),
+  });
 
-{/* // <!-- Main modal --> */}
-
-<div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" className={`${!openModal?'hidden': '' } mx-auto overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-[rgba(0,0,0,0.5)]`}>
-    <div className="relative p-4 w-full mx-auto  max-w-2xl max-h-full">
-        {/* <!-- Modal content --> */}
-        <div className="relative bg-white rounded-lg shadow ">
-            {/* <!-- Modal header --> */}
-            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    Static modal
-                </h3>
-                <button onClick={()=>setOpenModal(!openModal)} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="static-modal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
+  return (
+    <div className="flex w-screen h-screen overflow-x-hidden">
+      <section className="w-[40%] bg-[#2b293d] h-[37.5rem] pt-5 hidden sm:block">
+        <img src={img1} className="w-44 ps-7" alt="" />
+        <h2 className="mt-24 text-[#FFFFFF] ps-14 font-bold leading-[3rem] text-4xl">
+          Discover tailored <br /> events. <br /> Sign up for personalized{" "}
+          <br /> recommendations <br /> today
+        </h2>
+      </section>
+      <section className="sm:w-[60%] w-[100%] flex justify-center sm:bg-[rgb(43,41,61)] h-[37.5rem] ">
+        <div className=" sm:w-[100%]  bg-white flex items-center flex-col pt-14 rounded-l-3xl">
+          <div className=" sm:w-[70%] w-[80%] ">
+            <h1 className="text-[#2b293d] font-Montserrat font-bold text-4xl leading-10 mb-2">
+              Create account
+            </h1>
+            <div className="flex items-center justify-start">
+              <button className=" py-3 px-8 gap-2 flex items-center border border-[#c5c5c5] rounded text-center text-[#64636f]">
+                <img src={google} alt="" /> <span>Sign up with Google</span>
+              </button>
+              <button className=" py-3 px-8 gap-2 flex items-center  border border-[#c5c5c5] rounded text-center text-[#64636f] ml-10">
+                <img src={facebook} alt="" />
+                <span>Sign up with Facebook</span>
+              </button>
             </div>
-            {/* <!-- Modal body --> */}
-            <div className="p-4 md:p-5 space-y-4">
-                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                    With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                </p>
-                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-                </p>
+            <div className="flex">
+              <div className="w-[238px]  mt-6 border-t-2 border-gray-300 my-4"></div>
+              <span className="mt-4 ml-2 text-[#64636f]">OR</span>
+              <div className="w-[242px] ms-2 mt-6 border-t-2 border-gray-300 my-4"></div>
             </div>
-            {/* <!-- Modal footer --> */}
-            <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="static-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
-                <button data-modal-hide="static-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
-            </div>
+            <form onSubmit={formik.handleSubmit}>
+              <ul className="">
+                <li className="flex flex-col mt-2">
+                  <label>Full Name</label>
+                  <input
+                    className={
+                      formik.touched.fullname && formik.errors.fullname
+                        ? "border border-red-500 py-3 px-2 mt-1 outline-none rounded-[.4rem]"
+                        : "border border-green-500 py-3 px-2 mt-1 outline-none rounded-[.4rem]"
+                    }
+                    type="text"
+                    placeholder="Enter your full name"
+                    name="fullname"
+                    onChange={formik.handleChange}
+                    value={formik.values.fullname}
+                    onBlur={formik.handleBlur}
+                  />
+                  <div className="text-red-400">
+                    {formik.touched.fullname && formik.errors.fullname}
+                  </div>
+                </li>
+                <li className="flex flex-col mt-2">
+                  <label>Email</label>
+                  <input
+                    className={
+                      formik.touched.email && formik.errors.email
+                        ? "border border-red-500 py-3 px-2 mt-1 outline-none rounded-[.4rem]"
+                        : "border py-3 px-2 mt-1 outline-none rounded-[.4rem]"
+                    }
+                    type="email"
+                    placeholder="Enter your e-mail"
+                    name="email"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                    onBlur={formik.handleBlur}
+                  />
+                  <div className="text-red-500">
+                    {formik.touched.email && formik.errors.email}
+                  </div>
+                </li>
+                <li className="flex flex-col mt-2">
+                  <label>Password</label>
+                  <input
+                    className={
+                      formik.touched.password && formik.errors.password
+                        ? "border border-red-500 py-3 px-2 mt-1 outline-none rounded-[.4rem]"
+                        : "border py-3 px-2 mt-1 outline-none rounded-[.4rem]"
+                    }
+                    type="password"
+                    placeholder="Enter your password"
+                    name="password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.password}
+                  />
+                  <div className="text-red-500">
+                    {formik.touched.password && formik.errors.password}
+                  </div>
+                </li>
+              </ul>
+              <button
+                type="submit"
+                className="mt-6 bg-[#2b293d] text-white w-[100%] py-3 rounded-[.4rem] "
+              >
+                Create Account
+              </button>
+            </form>
+            <p className="text-[#676767] mt-3">
+              Already have an account?{" "}
+              <Link className="text-[#474654]" to="/login">
+                Login
+              </Link>
+            </p>
+          </div>
         </div>
+      </section>
     </div>
-</div>
-</>
-    )
-}
-export default Register
+  );
+};
+
+export default Register;
+
+// import React from "react";
+// import img1 from "../assets/Logo.png";
+// import Product from "./Product";
+// import { Link } from "react-router-dom";
+// import google from "../assets/google.png";
+// import facebook from "../assets/facebook.png";
+
+// const Register = () => {
+//   return (
+//     <div className="flex  w-screen h-screen">
+//       <section className="w-[40%] bg-[#2b293d] h-[120%] pt-5">
+//         <img src={img1} className="w-44 ps-7" alt="" />
+//         <h2 className="mt-24 text-[#FFFFFF] ps-14 font-bold leading-[3rem] text-4xl">
+//           Discover tailored <br /> events. <br /> Sign up for personalized{" "}
+//           <br /> recommendations <br /> today
+//         </h2>
+//       </section>
+//       <section className="w-3/5 flex justify-center mt-14 rounded-l-3xl">
+//         <div className="w-[70%] ">
+//           <h1 className="text-[#2b293d] font-Montserrat font-bold text-4xl leading-10 mb-7 ">
+//             Create account
+//           </h1>
+//           <div className="flex items-center justify-start">
+//             <button className=" py-3 px-8 gap-2 flex items-center border border-[#c5c5c5] rounded text-center text-[#64636f]">
+//               <img src={google} alt="" /> <span>Sign up with Google</span>
+//             </button>
+//             <button className=" py-3 px-8 gap-2 flex items-center  border border-[#c5c5c5] rounded text-center text-[#64636f] ml-10">
+//               <img src={facebook} alt="" /><span>Sign up with Facebook</span>
+//             </button>
+//           </div>
+//           <div className="flex ">
+//             <div className="w-[238px]  mt-12 border-t-2 border-gray-300 my-4"></div>
+//             <span className="mt-9 ml-2 text-[#64636f]">OR</span>
+//             <div className="w-[242px] ms-2 mt-12 border-t-2 border-gray-300 my-4"></div>
+//           </div>
+//           <form>
+//             <ul className="mt-6">
+//               <li className="flex flex-col mt-6">
+//                 <label htmlFor="fullname">Full Name</label>
+//                 <input
+//                   className="border py-3 px-2 mt-1 outline-none rounded-[.4rem] "
+//                   type="text"
+//                   placeholder="Enter your full name"
+//                   name="fullname"
+//                 />
+//               </li>
+//               <li className="flex flex-col mt-6">
+//                 <label htmlFor="email">Email</label>
+//                 <input
+//                   className="border py-3 px-2 mt-1 outline-none rounded-[.4rem] "
+//                   type="email"
+//                   placeholder="Enter your e-mail"
+//                   name="email"
+//                 />
+//               </li>
+//               <li className="flex flex-col mt-6">
+//                 <label htmlFor="password">Password</label>
+//                 <input
+//                   className="border py-3 px-2 mt-1 outline-none rounded-[.4rem] "
+//                   type="password"
+//                   placeholder="Enter your password"
+//                   name="password"
+//                 />
+//               </li>
+//             </ul>
+//             <button className="mt-6 bg-[#2b293d] text-white w-[100%] py-3 rounded-[.4rem] ">
+//               Create Account
+//             </button>
+//           </form>
+//           <p className="text-[#676767] mt-3">
+//             Already have an account?{" "}
+//             <Link className="text-[#474654]" to="/login">
+//               Login
+//             </Link>
+//           </p>
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default Register;
+
+// export default Register;
+
+// import React from "react";
+// import img1 from "../assets/Logo.png";
+// import Product from "./Product";
+// import { Link } from "react-router-dom";
+
+// const Register = () => {
+//   return (
+//     <div className="bg-[#2b293d] w-screen h-screen flex">
+//       <section className="w-[40%] bg-[#2b293d] h-[120%] pt-5">
+//         <img src={img1} className="w-44 ps-7" alt="" />
+//         <h2 className="mt-24 text-[#FFFFFF] ps-14 font-bold leading-[3rem] text-4xl">
+//           Discover tailored <br /> events. <br /> Sign up for personalized{" "}
+//           <br /> recommendations <br /> today
+//         </h2>
+//       </section>
+//       <section className="bg-[#FFFFFF] w-3/4 rounded-l-3xl flex flex-col item-center justify-center ">
+//         <div className="w-[70%]">
+//           {" "}
+//           <h1 className="text-[#2b293d] font-Montserrat font-bold text-4xl leading-10 mb-7 ">
+//             Create account
+//           </h1>{" "}
+//           <div>
+//             {" "}
+//             <button className=" py-3 px-11 border border-[#c5c5c5] rounded text-center text-[#64636f]">
+//               Sign up with Google
+//             </button>{" "}
+//             <button className=" py-3 px-11 border border-[#c5c5c5] rounded text-center text-[#64636f] ml-10">
+//               Sign up with Facebook
+//             </button>{" "}
+//           </div>{" "}
+//           <div className="flex ">
+//             {" "}
+//             <div className="w-[238px]  mt-12 border-t-2 border-gray-300 my-4"></div>
+//             <span className="mt-9 ml-2 text-[#64636f]">OR</span>{" "}
+//             <div className="w-[242px] ms-2 mt-12 border-t-2 border-gray-300 my-4"></div>{" "}
+//           </div>{" "}
+//           <form>
+//             {" "}
+//             <ul className="mt-6">
+//               {" "}
+//               <li className="flex flex-col mt-6">
+//                 <label htmlFor="fullname">Full Name</label>{" "}
+//                 <input
+//                   className="border py-3 px-2 mt-1 outline-none rounded-[.4rem] "
+//                   type="text"
+//                   placeholder="Enter your full name"
+//                   name="fullname"
+//                 />
+//               </li>
+//               <li className="flex flex-col mt-6">
+//                 <label htmlFor="email">Email</label>
+//                 <input
+//                   className="border py-3 px-2 mt-1 outline-none rounded-[.4rem] "
+//                   type="email"
+//                   placeholder="Enter your e-mail"
+//                   name="email"
+//                 />
+//               </li>
+//               <li className="flex flex-col mt-6">
+//                 <label htmlFor="password">Password</label>
+//                 <input
+//                   className="border py-3 px-2 mt-1 outline-none rounded-[.4rem] "
+//                   type="password"
+//                   placeholder="Enter your password"
+//                   name="password"
+//                 />
+//               </li>
+//             </ul>
+//             <button className="mt-6 bg-[#2b293d] text-white w-[100%] py-3 rounded-[.4rem] ">
+//               Create Account
+//             </button>
+//           </form>
+//           <p className="text-[#676767] mt-3">
+//             Already have an account?{" "}
+//             <Link className="text-[#474654]" to="/login">
+//               Login
+//             </Link>
+//           </p>
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default Register;

@@ -31,7 +31,7 @@ const Home = () => {
 
   return (
     <>
-    <Nav/>
+    
     <div className='h-[50vh] bg-custom-image bg-cover bg-center' style={{ backgroundImage:"url('/bgimage.jpg')" }}>
     <div className="ml-[50px]">
         <p className="text-white text-[25px] pt-28 font-bold">Dont miss out</p>
