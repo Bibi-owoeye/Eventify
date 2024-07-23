@@ -1,14 +1,15 @@
 import React from "react";
 import img1 from "../assets/Logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import google from "../assets/google.png";
 import facebook from "../assets/facebook.png";
 
 const Login = () => {
+  const navigate = useNavigate()
   return (
     <div className="flex overflow-x-hidden">
       <section className="w-[40%] bg-[#2b293d] h-[37rem] pt-5">
-        <img src={img1} className="w-44 ps-7" alt="" />
+        <img src={img1} className="w-44 ps-7" alt="" onClick={() =>navigate('/')}/>
         <h2 className="mt-24 text-[#FFFFFF] ps-14 font-bold leading-[3rem] text-4xl">
           Discover tailored <br /> events. <br /> Sign up for personalized{" "}
           <br /> recommendations <br /> today

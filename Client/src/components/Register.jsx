@@ -1,6 +1,6 @@
 import React from "react";
 import img1 from "../assets/Logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import google from "../assets/google.png";
 import facebook from "../assets/facebook.png";
 import { useFormik } from "formik";
@@ -9,6 +9,8 @@ import axios from "axios"
 
 const Register = () => {
 
+
+      const navigate = useNavigate()
   let url = "http://localhost:5000/register"
   const formik = useFormik({
     initialValues: {
@@ -41,7 +43,7 @@ const Register = () => {
   return (
     <div className="flex w-screen h-screen overflow-x-hidden">
       <section className="w-[40%] bg-[#2b293d] h-[37.5rem] pt-5 hidden sm:block">
-        <img src={img1} className="w-44 ps-7" alt="" />
+        <img src={img1} className="w-44 ps-7" alt="" onClick={() =>navigate('/')} />
         <h2 className="mt-24 text-[#FFFFFF] ps-14 font-bold leading-[3rem] text-4xl">
           Discover tailored <br /> events. <br /> Sign up for personalized{" "}
           <br /> recommendations <br /> today

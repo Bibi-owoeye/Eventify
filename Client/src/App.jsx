@@ -29,8 +29,6 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/card" element={<CardDetails />} />
         {/* <Route path='/register' element= {<Register/>}/> */}
-        <Route path="/changeEmail" element={<ChangeEmail />} />
-        <Route path="/Password" element={<Password />} />
         <Route path="/searchResult" element={<SearchResult />} />
         <Route path='/event/banner' element={<Banner />} />
         <Route path='/event/tickets' element={<Tickets />} />
@@ -38,6 +36,9 @@ const App = () => {
         </Route>
         {/* <Route path='/createevent' element={<Eventedit />} />  */}
         <Route path="/nav2" element={<Nav2 />} >
+        <Route path="/nav2/home" element={<Home />} />
+        <Route path="/nav2/Password" element={<Password />} />
+        <Route path="/nav2/changeEmail" element={<ChangeEmail />} />
         <Route path="/nav2/ticket" element={<Ticket1 />} />
         <Route path='/nav2/createevent' element={<Eventedit />} />
         <Route path="/nav2/interest" element={<Interest />} />

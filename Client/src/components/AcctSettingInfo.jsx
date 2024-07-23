@@ -49,9 +49,9 @@ const AcctSettingInfo = () => {
             <h3 className=" text-[#2D2C3C] font-bold text-2xl">Account Settings</h3>
         </div>
         <div className="flex flex-col text-[#2D2C3C] font-semibold space-y-1">
-            <Link to='/accountInfo' className="bg-[#ffffff] ps-10 py-2">Account Info</Link>
-            <Link to='/changeEmail' className="ps-10 py-2">Change Email</Link>
-            <Link to='/password' className="ps-10 py-2">Password</Link>
+            <Link to='/nav2/accountInfo' className="bg-[#ffffff] ps-10 py-2">Account Info</Link>
+            <Link to='/nav2/changeEmail' className="ps-10 py-2">Change Email</Link>
+            <Link to='/nav2/password' className="ps-10 py-2">Password</Link>
         </div>
       </div>
       <div className="bg-[#FFFFFF] px-5 w-[78%]">

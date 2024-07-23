@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import icon from "../assets/icons8-arrow.png";
 import cutoff from "../assets/cutoff.png";
+import { useNavigate } from "react-router";
 
 const Interest = () => {
+
+ const navigate = useNavigate()
+
   const [isClicked, setIsClicked] = useState({
     concerts: false,
     festivals: false,
@@ -59,7 +63,7 @@ const Interest = () => {
   return (
     <div className="p-8">
       <div className="flex gap-5 items-center text-[#2d2c3c] text-4xl">
-        <img src={icon} alt="" />
+        <img src={icon} alt=""  onClick={()=> navigate('/nav2/home')}/>
         <h1 className="font-bold"> Share your interests with us</h1>
       </div>
 
